@@ -56,7 +56,7 @@ public class LandingTest extends TestBase {
             ".lang-item-en, Company",
             ".lang-item-ru, Компания"
     })
-    @DisplayName("Проверка мены локализации")
+    @DisplayName("Проверка меню локализации")
     void testOfLocalizationChange(String localItem, String companyText) {
         TestData.openMainPage()
                 .checkPageLocalization(localItem, companyText);
