@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import testdata.TestBase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,14 +38,14 @@ public class LandingTest extends TestBase {
             ".soc-insta, https://vk.com/public217753469", // это ошибка фронта
             ".soc-tw, https://consent.youtube.com"
     })
-    @DisplayName("Проверка перехода на VK.COM по кнопке в хедер меню")
+    @DisplayName("Проверка перехода на страницу соцсети по кнопке в хедер меню")
     void socialNetworkTest(String socialPin, String socialUrl) {
         TestData.openMainPage()
                 .clickOnSocialNetwork(socialPin)
                 .checkSocialNetworkURL(socialUrl);
     }
 
-       @Test
+    @Test
     @DisplayName("Проверка гамбергер-меню")
     void hamburgerBoxMenuTest() {
         TestData.openMainPage()
@@ -61,4 +63,22 @@ public class LandingTest extends TestBase {
         TestData.openMainPage()
                 .checkPageLocalization(localItem, companyText);
     }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "personalDataPolicy.csv")
+    @DisplayName("Проверка текста соглашения о персональных данных на двух языках")
+    void personalDataPolicyValidation(String localItem, String localPolicyRef, String localPolicyText) {
+        TestData.openMainPage()
+                .searchFooterElement(localItem, localPolicyRef)
+                .textPolicyValidation(localPolicyText);
+    }
+
+    @Test
+    @DisplayName("Проверка активации кнопки после согласия с политикой конфиденциальности")
+    void buttonCheckAfterCheckboxActivation() {
+        TestData.openTargetUrl(videoregistraciyaUrl)
+                .clickOnCheckbox()
+                .checkAttr();
+    }
+
 }

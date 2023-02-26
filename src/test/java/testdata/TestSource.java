@@ -15,10 +15,18 @@ public class TestSource {
         s2email = "#s2email",
         s2error = ".s2_error",
         subscribeButton = "[name=subscribe]",
-        masthead = "#masthead";
+        masthead = "#masthead",
+    footer = "#footer",
+    main = "#main",
+    checkbox = "[type=checkbox]",
+    buttonPost = "[value=Отправить]",
+    attrDisable = "disabled";
+
+
 
     public static String // urls
-        vkUrl = "https://vk.com/public217753469";
+        vkUrl = "https://vk.com/public217753469",
+        videoregistraciyaUrl = "/reshenija/camanager-sistema-videoregistracii-i-predotvrashhenija-stolknovenij/";
 
     public static String // input
     incorrectMail = "test@test.com";
